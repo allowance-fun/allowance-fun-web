@@ -1,12 +1,11 @@
 import React from 'react';
-import {Box, Grommet, Main, Paragraph, ResponsiveContext, Text} from 'grommet';
+import {Box, Grommet, Paragraph, ResponsiveContext} from 'grommet';
 import Confetti from 'react-confetti';
 import useWindowSize from 'react-use/lib/useWindowSize';
-import Zoom from 'react-reveal/Zoom';
+import { Zoom } from 'react-awesome-reveal';
 
 function MainPage() {
     const size = React.useContext(ResponsiveContext);
-    console.log(size);
     let fontSize = "60pt";
     let rotation = "rotate(-15deg)";
     let boxMargin = "large";
@@ -19,7 +18,7 @@ function MainPage() {
     }
     return (
     <div style={{overflowY: "auto"}}>
-        <Box margin={{bottom: titleBottomMargin, top: "medium"}} width="large" style={{fontFamily: "Henny Penny", color: "#179614", fontSize: fontSize, transform: rotation}} responsive="false"><Zoom top delay="1000">Allowance.Fun!</Zoom></Box>
+        <Box margin={{bottom: titleBottomMargin, top: "medium"}} width="large" style={{fontFamily: "Henny Penny", color: "#179614", fontSize: fontSize, transform: rotation}} responsive={false}><Zoom direction="top" delay={1000}>Allowance.Fun!</Zoom></Box>
         <Box margin="small" align="center">
             <Box margin={{top: boxMargin}} pad={"medium"}
                  alignContent="center" width="xlarge"
@@ -28,19 +27,20 @@ function MainPage() {
                  style={{backdropFilter: "blur(5px)"}}
             >
                 <Paragraph size="large" fill={true}>
-                    Allowance.Fun is a app to help families manage allowances and how much the children have saved.
-                    Do you ever wish that you and your children could keep track of how much they've saved and spent
-                    without giving them physical money that get's lost?  Don't have the cash on allowance day?  Your
-                    kids screaming at you for the latest game and you don't know how much money they are due because
-                    of several missed allowance pay days?
+                    Allowance.Fun is a app to help families manage allowances and keep track of how much the children
+                    have saved and spent.
                 </Paragraph>
+                <ul style={{fontSize: "1.25em", marginBlockStart: 0, marginBlockEnd: 0}}>
+                    <li>Do you ever give them cash, and they lose it?</li>
+                    <li>Don't have the cash on allowance day?</li>
+                    <li>Kids begging you for the latest game and you do not know how much money they "have"?</li>
+                </ul>
                 <Paragraph size="large" fill={true}>
-                    This app might be for you.  Allowance.fun is like a pretend digital ledger to help you and your
-                    kids keep track of allowances.  No real money hear, it's all fake.  But you can choose how many
-                    accounts they have and what they are for.  So you want them to have a virtual savings?  Create them
-                    2 accounts and do an automatic split between them for each deposit.  You as the parent are in full
-                    control, but at least you kids can see what their balance is without you (eliminating one of those
-                    really annoying questions).
+                    This app might be for you.  Allowance.fun is a pretend digital ledger to help you and your
+                    kids keep track of allowances.  No real money here, it is all virtual.  But you can choose how many
+                    accounts they have and what those accounts are used for.  Perhaps you want them to have a virtual
+                    savings?  With this app you can create them 2 accounts and do an automatic split between them
+                    with each deposit.  You, as the parent, are in full control.
                 </Paragraph>
             </Box>
         </Box>

@@ -7,14 +7,16 @@ export default function () {
     const size = React.useContext(ResponsiveContext);
     let fontSize = "60pt";
     let rotation = "rotate(-15deg)";
-    let titleBottomMargin = "medium";
+    let titleBottomMargin = "large";
+    let titleTopMargin = "xlarge";
     if(size === "small") {
         rotation = "rotate(-10deg)";
         fontSize = "30pt";
-        titleBottomMargin = "xlarge";
+        titleBottomMargin = "large";
+        titleTopMargin = "large";
     }
     return (
-        <Box margin={{bottom: titleBottomMargin, top: "medium"}}
+        <Box margin={{bottom: titleBottomMargin, top: titleTopMargin}}
              width="large"
              style={{fontFamily: "Henny Penny", color: "#179614", fontSize: fontSize, transform: rotation}}
              responsive={false}>

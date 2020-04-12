@@ -2,7 +2,7 @@
 import ConfettiBackground from '../components/confetti-background';
 import Logo from '../components/logo';
 import React from "react";
-import {Box, Paragraph, ResponsiveContext} from "grommet";
+import {Box, Button, Paragraph, ResponsiveContext} from "grommet";
 
 export default function (props) {
     const size = React.useContext(ResponsiveContext);
@@ -13,7 +13,12 @@ export default function (props) {
     return (
         <ConfettiBackground>
         <div style={{overflowY: "auto"}}>
-            <Logo/>
+            <Box direction="row">
+                <Logo/>
+                <Box flex="grow" justify="start" align="end" pad="small">
+                    <Button primary={true} href="/app/login" label="Launch" />
+                </Box>
+            </Box>
             <Box margin="small" align="center">
                 <Box margin={{top: boxMargin}} pad={"medium"}
                      alignContent="center" width="xlarge"

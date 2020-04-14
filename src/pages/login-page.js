@@ -18,7 +18,7 @@ export default function () {
             <div style={{overflowY: "auto", minHeight: height - 1}}>
                 <Logo/>
                 <Box align="center" justify="center" pad="xlarge">
-                    <Button as={google_signing_button} />
+                    <Button href="/api/login" as={google_signing_button} />
                 </Box>
             </div>
         </ConfettiBackground>

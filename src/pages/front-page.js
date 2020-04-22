@@ -2,15 +2,11 @@
 import ConfettiBackground from '../components/confetti-background';
 import Logo from '../components/logo';
 import React, {useState} from "react";
-import {Box, Button, Footer, Paragraph, ResponsiveContext, Text} from "grommet";
+import {Box, Button, Footer, Paragraph, ResponsiveContext} from "grommet";
 import {isAuthenticated, useLoginState} from "../state/login-state";
 
 export default function (props) {
     const size = React.useContext(ResponsiveContext);
-    let webVersion = "dev";
-    if(process.env.NODE_ENV === 'production') {
-        webVersion = `1.0.0-${process.env.BUILD_NUMBER}`;
-    }
     let boxMargin = "large";
     if(size === "small") {
         boxMargin = "medium";
@@ -66,8 +62,7 @@ export default function (props) {
             </Box>
         </div>
         <Footer style={{position: "absolute", bottom: 0, minWidth: "100%"}} background="brand" direction="row-reverse">
-            <Box>Server Version: {serverVersion}</Box>
-            <Box flex="grow">Web Version: {webVersion}</Box>
+            <Box>Version: {serverVersion}</Box>
         </Footer>
     </ConfettiBackground>
     );

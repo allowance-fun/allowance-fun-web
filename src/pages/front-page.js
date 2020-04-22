@@ -3,6 +3,7 @@ import ConfettiBackground from '../components/confetti-background';
 import Logo from '../components/logo';
 import React from "react";
 import {Box, Button, Paragraph, ResponsiveContext} from "grommet";
+import {isAuthenticated, useLoginState} from "../state/login-state";
 
 export default function (props) {
     const size = React.useContext(ResponsiveContext);
@@ -10,13 +11,22 @@ export default function (props) {
     if(size === "small") {
         boxMargin = "medium";
     }
+    let loginButtonLabel = "Login";
+    let loginButtonHref = "/api/login";
+    let {loginState} = useLoginState();
+    console.log(loginState);
+    console.log(isAuthenticated(loginState));
+    if(isAuthenticated(loginState)) {
+        loginButtonLabel = "Launch";
+        loginButtonHref = "/app/Home";
+    }
     return (
         <ConfettiBackground>
         <div style={{overflowY: "auto"}}>
             <Box direction="row">
                 <Logo/>
                 <Box flex="grow" justify="start" align="end" pad="small">
-                    <Button primary={true} href="/app/login" label="Launch" />
+                    <Button primary={true} href={loginButtonHref} label={loginButtonLabel} />
                 </Box>
             </Box>
             <Box margin="small" align="center">

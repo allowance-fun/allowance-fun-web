@@ -14,7 +14,7 @@ pipeline {
       }
       steps {
         sh 'yarn install'
-        sh 'PUBLIC_URL=https://allowance.fun yarn build'
+        sh 'PUBLIC_URL=https://allowance.fun BUILD_NUMBER=${BUILD_NUMBER} yarn build'
         sh 'tar czf allowance-fun.tar.gz build/'
         stash(name: 'dist', includes: 'allowance-fun.tar.gz')
       }

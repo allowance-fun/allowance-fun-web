@@ -9,7 +9,7 @@ export default function (props) {
     const size = React.useContext(ResponsiveContext);
     let webVersion = "dev";
     if(process.env.NODE_ENV === 'production') {
-        webVersion = "1.0.0-" + process.env.BUILD;
+        webVersion = "1.0.0-" + process.env.BUILD_NUMBER;
     }
     let boxMargin = "large";
     if(size === "small") {

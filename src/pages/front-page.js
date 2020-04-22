@@ -1,12 +1,16 @@
 
 import ConfettiBackground from '../components/confetti-background';
 import Logo from '../components/logo';
-import React from "react";
-import {Box, Button, Paragraph, ResponsiveContext} from "grommet";
+import React, {useState} from "react";
+import {Box, Button, Footer, Paragraph, ResponsiveContext, Text} from "grommet";
 import {isAuthenticated, useLoginState} from "../state/login-state";
 
 export default function (props) {
     const size = React.useContext(ResponsiveContext);
+    let webVersion = "dev";
+    if(process.env.NODE_ENV === 'production') {
+        webVersion = "1.0.0-" + process.env.BUILD;
+    }
     let boxMargin = "large";
     if(size === "small") {
         boxMargin = "medium";
@@ -20,9 +24,15 @@ export default function (props) {
         loginButtonLabel = "Launch";
         loginButtonHref = "/app/Home";
     }
+    let [serverVersion, updateServerVersion] = useState("unknown");
+    fetch("/api/version").then((response) => {
+        response.json().then((versionInfo) => {
+            updateServerVersion(versionInfo["ServerVersion"]);
+        });
+    })
     return (
         <ConfettiBackground>
-        <div style={{overflowY: "auto"}}>
+        <div style={{overflowY: "auto", marginBottom: ".2in"}}>
             <Box direction="row">
                 <Logo/>
                 <Box flex="grow" justify="start" align="end" pad="small">
@@ -55,6 +65,10 @@ export default function (props) {
                 </Box>
             </Box>
         </div>
+        <Footer style={{position: "absolute", bottom: 0, minWidth: "100%"}} background="brand" direction="row-reverse">
+            <Box>Server Version: {serverVersion}</Box>
+            <Box flex="grow">Web Version: {webVersion}</Box>
+        </Footer>
     </ConfettiBackground>
     );
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 import {Grommet} from 'grommet';
 import FrontPage from './pages/front-page';
-import LoginPage from './pages/login-page';
 import HomePage from "./pages/home";
 import {
     BrowserRouter as Router,
@@ -24,7 +23,6 @@ function App() {
                 <Router>
                     <Switch>
                         <Route exact path="/" component={FrontPage} />
-                        <Route path="/app/login" component={LoginPage} />
                         <Route path="/app/Home" component={HomePage} />
                     </Switch>
                 </Router>

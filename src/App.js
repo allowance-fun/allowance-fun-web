@@ -18,7 +18,7 @@ function App() {
                     brand: '#179614'
                 }
             }
-        }}>
+        }} full={true}>
             <LoginStateProvider>
                 <Router>
                     <Switch>

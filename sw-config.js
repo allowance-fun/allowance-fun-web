@@ -13,4 +13,5 @@ module.exports = {
             handler: 'networkFirst',
         },
     ],
+    navigateFallbackWhitelist: [ /^(?!\/app\/).*/ ],
 };

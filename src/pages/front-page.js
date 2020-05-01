@@ -32,7 +32,7 @@ export default function (props) {
             <Box direction="row">
                 <Logo/>
                 <Box flex="grow" justify="start" align="end" pad="small">
-                    <Button primary={true} label={loginButtonLabel} onClick={() => {window.location.href = "/api/login"}}/>
+                    <Button primary={true} href={loginButtonHref} label={loginButtonLabel} />
                 </Box>
             </Box>
             <Box margin="small" align="center">

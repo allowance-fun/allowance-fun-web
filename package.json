@@ -17,11 +17,12 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "react-use": "^13.27.1",
-    "styled-components": "^5.0.1"
+    "styled-components": "^5.0.1",
+    "sw-precache-cra": "^1.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && sw-precache-cra --config sw-config.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

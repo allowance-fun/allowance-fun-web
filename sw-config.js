@@ -1,15 +1,15 @@
 module.exports = {
     runtimeCaching: [
         {
-            urlPattern: '/api/login',
+            urlPattern: /^https:\/\/allowance\.fun\/api\/login/,
             handler: 'networkOnly',
         },
         {
-            urlPattern: '/api/callback',
+            urlPattern: /^https:\/\/allowance\.fun\/api\/callback.*/,
             handler: 'networkOnly',
         },
         {
-            urlPattern: '/api/',
+            urlPattern: /^https:\/\/allowance\.fun\/api\/.*/,
             handler: 'networkFirst',
         },
     ],

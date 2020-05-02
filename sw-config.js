@@ -14,4 +14,14 @@ module.exports = {
         },
     ],
     navigateFallbackWhitelist: [ /^\/app\// ],
+    staticFileGlobs: [
+        './build/**/**.html',
+        './build/*.jpg',
+        './build/*.png',
+        './build/*.ico',
+        './build/static/js/*.js',
+        './build/static/css/*.css',
+        './build/static/media/**'
+    ],
+
 };

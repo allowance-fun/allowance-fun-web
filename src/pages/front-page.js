@@ -14,8 +14,6 @@ export default function (props) {
     let loginButtonLabel = "Login";
     let loginButtonHref = "/api/login";
     let {loginState} = useLoginState();
-    console.log(loginState);
-    console.log(isAuthenticated(loginState));
     if(isAuthenticated(loginState)) {
         loginButtonLabel = "Launch";
         loginButtonHref = "/app/Home";

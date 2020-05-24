@@ -4,6 +4,7 @@ import {Box, Header, Image, Text} from "grommet";
 import AccountBalance from "../components/account-balance";
 import Panel from "../components/panel";
 import moment from "moment";
+import {Redirect} from "react-router";
 
 function getCurrentUser(loginState, familyObject) {
     if(isAuthenticated(loginState) && familyObject.Children) {
@@ -25,8 +26,12 @@ export default function HomePage(props) {
             });
         });
     }
+    if(!isAuthenticated(loginState)) {
+        return (<Redirect to="/" />);
+    }
 
     let user = getCurrentUser(loginState, familyObject);
+
 
     return (
         <Box fill="vertical" overflow={{vertical: "auto"}} background="url(/pennies.jpg)">
@@ -56,20 +61,22 @@ export default function HomePage(props) {
                                 </Box>
                                 <Box margin={{top: "small"}} pad={{left: "medium"}}>
                                     <table>
-                                        {user.Accounts.map((account) => {
-                                            let percentage = account.Split;
-                                            if(percentage === 0.0 && account.RemainderOfSplit) {
-                                                percentage = 0.8; // hack till the backend is fixed
-                                            }
-                                            let amount = sched.Amount * percentage;
-                                            return (
-                                                <tr>
-                                                    <td width="100%"><Text size="large">{account.Name} ({percentage * 100}%)</Text></td>
-                                                    <td align="right"><Text color="brand">+${amount.toFixed(2)}</Text></td>
-                                                    <td align="right">${(account.Balance + amount).toFixed(2)}</td>
-                                                </tr>
-                                            )
-                                        })}
+                                        <tbody>
+                                            {user.Accounts.map((account) => {
+                                                let percentage = account.Split;
+                                                if(percentage === 0.0 && account.RemainderOfSplit) {
+                                                    percentage = 0.8; // hack till the backend is fixed
+                                                }
+                                                let amount = sched.Amount * percentage;
+                                                return (
+                                                    <tr key={account.Id}>
+                                                        <td width="100%"><Text size="large">{account.Name} ({percentage * 100}%)</Text></td>
+                                                        <td align="right"><Text color="brand">+${amount.toFixed(2)}</Text></td>
+                                                        <td align="right">${(account.Balance + amount).toFixed(2)}</td>
+                                                    </tr>
+                                                )
+                                            })}
+                                        </tbody>
                                     </table>
                                 </Box>
                             </Panel>

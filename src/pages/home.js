@@ -21,9 +21,15 @@ export default function HomePage(props) {
     let [familyObject, updateFamilyObject] = useState({});
     if(isAuthenticated(loginState) && !familyObject.Children) {
         fetch("/api/family/" + loginState.familyId, {headers: {"Authorization": "Bearer " + loginState.token}}).then((response) => {
-            response.json().then((familyData) => {
-                updateFamilyObject(familyData);
-            });
+            if(response.status === 200) {
+                response.json().then((familyData) => {
+                    updateFamilyObject(familyData);
+                });
+            } else if(response.status === 401) {
+                return <Redirect to="/" />;
+            } else {
+                console.log(response);
+            }
         });
     }
     if(!isAuthenticated(loginState)) {

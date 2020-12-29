@@ -34,7 +34,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          build-args: BUILD_NUMBER=$GITHUB_RUN_NUMBER
+          build-args: BUILD_NUMBER=${{env.GITHUB_RUN_NUMBER}}
           tags: |
             allowancedotfun/allowance-fun-web:latest
-            allowancedotfun/allowance-fun-web:1.0.0-${GITHUB_RUN_NUMBER}
+            allowancedotfun/allowance-fun-web:1.0.0-${{env.GITHUB_RUN_NUMBER}}

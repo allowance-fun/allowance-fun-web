@@ -8,66 +8,77 @@ spec:
     http:  
       paths:  
       - path: "/"
+        pathType: Prefix
         backend:  
           service:
             name: allowance-fun-web-service
             port:
               number: 80
       - path: "/*.html"
+        pathType: Prefix
         backend:
           service:
             name: allowance-fun-web-service
             port:
               number: 80
       - path: "/*.js"
+        pathType: Prefix
         backend:
           service:
             name: allowance-fun-web-service
             port:
               number: 80
       - path: "/*.png"
+        pathType: Prefix
         backend:
           service:
             name: allowance-fun-web-service
             port:
               number: 80
       - path: "/*.json"
+        pathType: Prefix
         backend:
           service:
             name: allowance-fun-web-service
             port:
               number: 80
       - path: "/*.jpg"
+        pathType: Prefix
         backend:
           service:
             name: allowance-fun-web-service
             port:
               number: 80
       - path: "/*.txt"
+        pathType: Prefix
         backend:
           service:
             name: allowance-fun-web-service
             port:
               number: 80
       - path: "/*.map"
+        pathType: Prefix
         backend:
           service:
             name: allowance-fun-web-service
             port:
               number: 80
       - path: "/*.ico"
+        pathType: Prefix
         backend:
           service:
             name: allowance-fun-web-service
             port:
               number: 80
       - path: "/static/*"
+        pathType: Prefix
         backend:
           service:
             name: allowance-fun-web-service
             port:
               number: 80
       - path: "/app/*"
+        pathType: Prefix
         backend:
           service:
             name: allowance-fun-web-service

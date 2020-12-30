@@ -51,6 +51,8 @@ jobs:
           fetch-depth: '0'
       - name: Update Release
         run: |
+          git config user.name "Automated Build"
+          git config user.email "jasoncorbett@gmail.com"
           git checkout release
           git merge $GITHUB_SHA
           for orig in *.tmpl; do

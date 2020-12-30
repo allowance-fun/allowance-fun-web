@@ -4,6 +4,9 @@ metadata:
   name: allowance-fun-web
 spec:
   replicas: 2
+  selector:
+    matchLabels:
+      app: allowance-fun-web
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -16,7 +19,7 @@ spec:
         app: allowance-fun-web
     spec:
       containers:
-        - image: allowancedotfun/allowance-fun-web:1.0.0-14
+        - image: allowancedotfun/allowance-fun-web:1.0.0-15
           name: web-server
           livenessProbe:
             httpGet:

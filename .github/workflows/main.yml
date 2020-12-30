@@ -55,6 +55,7 @@ jobs:
           git config user.email "jasoncorbett@gmail.com"
           git checkout release
           git merge $GITHUB_SHA
+          cd deploy
           for orig in *.tmpl; do
             new=`echo $orig |perl -pe 's/\.tmpl$/.yml/'`
             echo "processing $orig into $new";

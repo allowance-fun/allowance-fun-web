@@ -15,10 +15,7 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Prepare
         id: prep
@@ -43,3 +40,18 @@ jobs:
           push: true
           build-args: ${{ steps.prep.outputs.build_number }}
           tags: ${{ steps.prep.outputs.tags }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Update Release
+        run: |
+          git checkout release
+          git merge $GITHUB_SHA
+          for orig in *.tmpl; do
+            new=`echo $orig |perl -pe 's/\.tmpl$/.yml/'`
+            echo "processing $orig into $new";
+            cat $orig| perl -pe "s/BUILD_NUMBER/9/g" >$new

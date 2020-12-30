@@ -47,6 +47,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
       - name: Update Release
         run: |
           git checkout release
@@ -54,4 +56,8 @@ jobs:
           for orig in *.tmpl; do
             new=`echo $orig |perl -pe 's/\.tmpl$/.yml/'`
             echo "processing $orig into $new";
-            cat $orig| perl -pe "s/BUILD_NUMBER/9/g" >$new
+            cat $orig| perl -pe "s/BUILD_NUMBER/${GITHUB_RUN_NUMBER}/g" >$new
+            git add $new
+          done
+          git commit -m "Updating release to build ${GITHUB_RUN_NUMBER}"
+          git push

@@ -1,0 +1,55 @@
+apiVersion: extensions/v1beta1
+kind: Ingress 
+metadata:  
+  name: mon.jcorbett.org
+spec:  
+  rules:  
+  - host: allowance.fun
+    http:  
+      paths:  
+      - path: "/"
+        backend:  
+          serviceName: allowance-fun-web
+          servicePort: 80
+      - path: "/*.html"
+        backend:
+          serviceName: allowance-fun-web
+          servicePort: 80
+      - path: "/*.js"
+        backend:
+          serviceName: allowance-fun-web
+          servicePort: 80
+      - path: "/*.png"
+        backend:
+          serviceName: allowance-fun-web
+          servicePort: 80
+      - path: "/*.json"
+        backend:
+          serviceName: allowance-fun-web
+          servicePort: 80
+      - path: "/*.jpg"
+        backend:
+          serviceName: allowance-fun-web
+          servicePort: 80
+      - path: "/*.txt"
+        backend:
+          serviceName: allowance-fun-web
+          servicePort: 80
+      - path: "/*.map"
+        backend:
+          serviceName: allowance-fun-web
+          servicePort: 80
+      - path: "/*.ico"
+        backend:
+          serviceName: allowance-fun-web
+          servicePort: 80
+      - path: "/static/*"
+        backend:
+          serviceName: allowance-fun-web
+          servicePort: 80
+      - path: "/app/*"
+        backend:
+          serviceName: allowance-fun-web
+          servicePort: 80
+
+

@@ -19,7 +19,7 @@ spec:
         app: allowance-fun-web
     spec:
       containers:
-        - image: allowancedotfun/allowance-fun-web:1.0.0-16
+        - image: allowancedotfun/allowance-fun-web:1.0.0-17
           name: web-server
           livenessProbe:
             httpGet:

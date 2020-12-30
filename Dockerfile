@@ -1,12 +1,18 @@
 FROM node:12 as webbuild
-ARG BUILD_NUMBER=0
 RUN mkdir /src; mkdir /public
-COPY src /src/
-COPY public /public/
 COPY package.json workbox-config.js yarn.lock /
 RUN yarn install
-RUN PUBLIC_URL=https://allowance.fun BUILD_NUMBER=${BUILD_NUMBER} yarn build
-
+COPY src /src/
+COPY public /public/
+ARG BUILD_NUMBER="0"
+ARG PUBLIC_URL="https://allowance.fun"
+RUN echo "PUBLIC_URL=$PUBLIC_URL" >env.production && \
+    echo "Using the following variables:" && \
+    cat env.production && \
+    echo "const ALLOWANCE_FUN_WEB_VERSION=\"1.0.0-$BUILD_NUMBER\";\n\nexport default ALLOWANCE_FUN_WEB_VERSION;" > src/web-version.js && \
+    echo "web-version.js:" && \
+    cat src/web-version.js
+RUN yarn build
 FROM caddy:2-alpine
 COPY Caddyfile /etc/caddy/Caddyfile
 COPY --from=webbuild /build /usr/share/caddy/

@@ -1,0 +1,3 @@
+const ALLOWANCE_FUN_WEB_VERSION="1.0.0-dev";
+
+export default ALLOWANCE_FUN_WEB_VERSION;

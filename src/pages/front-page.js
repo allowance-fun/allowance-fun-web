@@ -4,6 +4,7 @@ import Logo from '../components/logo';
 import React from "react";
 import {Box, Button, Footer, Paragraph, ResponsiveContext} from "grommet";
 import {isAuthenticated, useLoginState} from "../state/login-state";
+import ALLOWANCE_FUN_WEB_VERSION from "../web-version";
 
 export default function () {
     const size = React.useContext(ResponsiveContext);
@@ -14,10 +15,7 @@ export default function () {
     let loginButtonLabel = "Login";
     let loginButtonHref = "/api/login";
     let {loginState} = useLoginState();
-    let webVersion = "dev";
-    if(process.env.NODE_ENV === 'production') {
-        webVersion = `1.0.0-${process.env.BUILD_NUMBER}`;
-    }
+
     if(isAuthenticated(loginState)) {
         loginButtonLabel = "Launch";
         loginButtonHref = "/app/Home";
@@ -58,7 +56,7 @@ export default function () {
             </Box>
         </div>
         <Footer style={{position: "absolute", bottom: 0, minWidth: "100%"}} background="brand" direction="row-reverse">
-            <Box>Version: 1.0.0-{webVersion}</Box>
+            <Box>Version: {ALLOWANCE_FUN_WEB_VERSION}</Box>
         </Footer>
     </ConfettiBackground>
     );

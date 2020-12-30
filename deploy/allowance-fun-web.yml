@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: allowance-fun-web
+  name: allowance-fun-web-deployment
 spec:
   replicas: 2
   selector:
@@ -14,12 +14,12 @@ spec:
     type: RollingUpdate
   template:
     metadata:
-      name: allowance-fun-web
+      name: allowance-fun-web-pod
       labels:
         app: allowance-fun-web
     spec:
       containers:
-        - image: allowancedotfun/allowance-fun-web:1.0.0-15
+        - image: allowancedotfun/allowance-fun-web:1.0.0-16
           name: web-server
           livenessProbe:
             httpGet:

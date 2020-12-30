@@ -9,4 +9,4 @@ RUN PUBLIC_URL=https://allowance.fun BUILD_NUMBER=${BUILD_NUMBER} yarn build
 
 FROM caddy:2-alpine
 COPY Caddyfile /etc/caddy/Caddyfile
-COPY --from=webbuild /build/* /usr/share/caddy/
+COPY --from=webbuild /build /usr/share/caddy/
